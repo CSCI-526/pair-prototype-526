@@ -7,5 +7,5 @@ Playable Prototype</br>
 https://reiirene.github.io/526_Prototype/
 </br></br>
 Demo Video</br>
-https://youtu.be/nnvHDU6b0-M
+https://youtu.be/oGcoAVFga8k
 </br></br>
