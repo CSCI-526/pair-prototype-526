@@ -53,7 +53,6 @@ public class final : MonoBehaviour
 
 
 
-    // ����� "tube" ����ײ�¼�
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("tube")) 
@@ -65,19 +64,19 @@ public class final : MonoBehaviour
             freezerTool(gameObject, jointStartPosition);
 
             //transform.position = jointStartPosition;
-            //transform.rotation = Quaternion.identity;  // Reset rotation to zero
+            //transform.rotation = Quaternion.identity;  
             //ball.transform.position = ballStartPosition;
-            //ball.transform.rotation = Quaternion.identity;  // Reset rotation to zero
+            //ball.transform.rotation = Quaternion.identity;  
             //magnetCollider.transform.position = magnentStartPosition;
-            //magnetCollider.transform.rotation = Quaternion.identity;  // Reset rotation to zero
+            //magnetCollider.transform.rotation = Quaternion.identity;  
 
 
             //// Reset its velocity if it's a Rigidbody
             //Rigidbody rb = GetComponent<Rigidbody>();
             //Rigidbody magnentRb = magnetCollider.GetComponent<Rigidbody>();
 
-            //rb.constraints = RigidbodyConstraints.FreezeAll;  // Freeze all movement and rotation
-            //magnentRb.constraints = RigidbodyConstraints.FreezeAll;  // Freeze all movement and rotation
+            //rb.constraints = RigidbodyConstraints.FreezeAll;  
+            //magnentRb.constraints = RigidbodyConstraints.FreezeAll;  
 
 
             //rb.velocity = Vector3.zero;  // Stop all movement
@@ -100,10 +99,9 @@ public class final : MonoBehaviour
         }
     }
 
-    // ��� savePoint �Ĵ������¼�
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("savePoint")) // �����ײ�Ķ����� "savePoint" ��ǩ
+        if (other.CompareTag("savePoint")) 
         {
             Debug.Log("Save Point Reached, updating checkpoint.");
             jointStartPosition = nextPosition.transform.Find("Joint").transform.position;

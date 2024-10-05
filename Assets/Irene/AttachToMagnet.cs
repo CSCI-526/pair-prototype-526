@@ -29,7 +29,6 @@ public class AttachToMagnet : MonoBehaviour
 
                 other.transform.position = hit.point;
                 
-                // Offset the position slightly along the forward direction
                 other.transform.position += other.transform.forward * other.transform.localScale.z * 0.5f;
 
             }
@@ -40,23 +39,18 @@ public class AttachToMagnet : MonoBehaviour
 
     void Start()
     {
-        // Get the Renderer component
         objectRenderer = GetComponent<Renderer>();
         
-        // Get the Rigidbody component
         objectRigidbody = GetComponent<Rigidbody>();
 
-        // Check if the Renderer and Rigidbody are available
         if (objectRenderer != null)
         {
-            // Disable the Renderer to make the object invisible
             //objectRenderer.enabled = false;
         }
 
         if (objectRigidbody != null)
         {
-            // Rigidbody is still active, so no need to do anything here
-            // You can access its properties as needed
+
         }
     }
 }

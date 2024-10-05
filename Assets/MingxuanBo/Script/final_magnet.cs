@@ -22,22 +22,20 @@ public class final_magnet : MonoBehaviour
         if (other.transform.CompareTag(targetTag))
         {
 
-            // 获取Rigidbody并禁用物理作用
             attachedRigidbody = other.gameObject.GetComponent<Rigidbody>();
             if (attachedRigidbody != null)
             {
-                attachedRigidbody.isKinematic = true;  // 将Rigidbody设置为Kinematic，禁止物理作用
-                attachedRigidbody.useGravity = false;  // 禁用重力
+                attachedRigidbody.isKinematic = true; 
+                attachedRigidbody.useGravity = false; 
             }
 
-            // 获取Collider并禁用碰撞
             attachedCollider = other.gameObject.GetComponent<Collider>();
             if (attachedCollider != null)
             {
-                attachedCollider.enabled = false;  // 禁用碰撞
+                attachedCollider.enabled = false; 
             }
 
-            // 吸附物体
+
             attachedObject = other.transform;
 
             other.transform.SetParent(transform);
@@ -57,7 +55,6 @@ public class final_magnet : MonoBehaviour
 
             }
 
-            // 禁用父子物体之间的碰撞
             Collider parentCollider = GetComponent<Collider>();
             if (parentCollider != null && attachedCollider != null)
             {
@@ -65,7 +62,6 @@ public class final_magnet : MonoBehaviour
             }
 
 
-            //黏贴完碰撞还是开启下
             StartCoroutine(EnableColliderAfterDelay(1f));
 
 
@@ -79,7 +75,6 @@ public class final_magnet : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        // 延迟后重新启用碰撞
         if (attachedCollider != null)
         {
             attachedCollider.enabled = true;
@@ -90,7 +85,6 @@ public class final_magnet : MonoBehaviour
 
     private void Update()
     {
-        // 检查是否按下空格键
         if (attachedObject != null && Input.GetKey(KeyCode.Space))
         {
             ReleaseAttachedObject();
@@ -101,30 +95,26 @@ public class final_magnet : MonoBehaviour
     {
         if (attachedObject != null)
         {
-            // 恢复父子物体之间的碰撞
             Collider parentCollider = GetComponent<Collider>();
             if (parentCollider != null && attachedCollider != null)
             {
                 Physics.IgnoreCollision(parentCollider, attachedCollider, false);  // 恢复碰撞
             }
 
-            // 取消吸附
             attachedObject.SetParent(null);
 
-            // 重新启用物体的Rigidbody
             if (attachedRigidbody != null)
             {
-                attachedRigidbody.isKinematic = false;  // 恢复物理效果
-                attachedRigidbody.useGravity = true;    // 启用重力
+                attachedRigidbody.isKinematic = false;  
+                attachedRigidbody.useGravity = true; 
             }
 
-            // 恢复碰撞
             if (attachedCollider != null)
             {
                 attachedCollider.enabled = true;  // 启用碰撞
             }
 
-            // 重置引用
+
             attachedRigidbody = null;
             attachedCollider = null;
             attachedObject = null;
@@ -134,23 +124,19 @@ public class final_magnet : MonoBehaviour
 
     void Start()
     {
-        // Get the Renderer component
+
         objectRenderer = GetComponent<Renderer>();
 
-        // Get the Rigidbody component
+
         objectRigidbody = GetComponent<Rigidbody>();
 
-        // Check if the Renderer and Rigidbody are available
         if (objectRenderer != null)
         {
-            // Disable the Renderer to make the object invisible
             //objectRenderer.enabled = false;
         }
 
         if (objectRigidbody != null)
         {
-            // Rigidbody is still active, so no need to do anything here
-            // You can access its properties as needed
         }
     }
 
